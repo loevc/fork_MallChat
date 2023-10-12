@@ -30,18 +30,18 @@ public class TokenInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         //获取用户登录token
-        String token = getToken(request);
-        Long validUid = loginService.getValidUid(token);
-        if (Objects.nonNull(validUid)) {//有登录态
-            request.setAttribute(ATTRIBUTE_UID, validUid);
-        } else {
-            boolean isPublicURI = isPublicURI(request.getRequestURI());
-            if (!isPublicURI) {//又没有登录态，又不是公开路径，直接401
-                HttpErrorEnum.ACCESS_DENIED.sendHttpError(response);
-                return false;
-            }
-        }
-        MDC.put(MDCKey.UID, String.valueOf(validUid));
+//        String token = getToken(request);
+//        Long validUid = loginService.getValidUid(token);
+//        if (Objects.nonNull(validUid)) {//有登录态
+//            request.setAttribute(ATTRIBUTE_UID, validUid);
+//        } else {
+//            boolean isPublicURI = isPublicURI(request.getRequestURI());
+//            if (!isPublicURI) {//又没有登录态，又不是公开路径，直接401
+//                HttpErrorEnum.ACCESS_DENIED.sendHttpError(response);
+//                return false;
+//            }
+//        }
+//        MDC.put(MDCKey.UID, String.valueOf(validUid));
         return true;
     }
 

@@ -31,16 +31,16 @@ public class BlackInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        Map<Integer, Set<String>> blackMap = userCache.getBlackMap();
-        RequestInfo requestInfo = RequestHolder.get();
-        if (inBlackList(requestInfo.getUid(), blackMap.get(BlackTypeEnum.UID.getType()))) {
-            HttpErrorEnum.ACCESS_DENIED.sendHttpError(response);
-            return false;
-        }
-        if (inBlackList(requestInfo.getIp(), blackMap.get(BlackTypeEnum.IP.getType()))) {
-            HttpErrorEnum.ACCESS_DENIED.sendHttpError(response);
-            return false;
-        }
+//        Map<Integer, Set<String>> blackMap = userCache.getBlackMap();
+//        RequestInfo requestInfo = RequestHolder.get();
+//        if (inBlackList(requestInfo.getUid(), blackMap.get(BlackTypeEnum.UID.getType()))) {
+//            HttpErrorEnum.ACCESS_DENIED.sendHttpError(response);
+//            return false;
+//        }
+//        if (inBlackList(requestInfo.getIp(), blackMap.get(BlackTypeEnum.IP.getType()))) {
+//            HttpErrorEnum.ACCESS_DENIED.sendHttpError(response);
+//            return false;
+//        }
         return true;
     }
 
